@@ -181,7 +181,7 @@ class TinyPhysicsSimulator:
     for _ in range(CONTEXT_LENGTH, len(self.data)):
       self.step()
       if self.debug and self.step_idx % 10 == 0:
-        print(f"Step {self.step_idx:<5}: Current lataccel: {self.current_lataccel:>6.2f}, Target lataccel: {self.target_lataccel_history[-1]:>6.2f}")
+        print(f"Step {self.step_idx:<5}: Current lataccel: {self.current_lataccel:>6.2f}, Target lataccel: {self.target_lataccel_history[-1]:>6.2f}, Difference: {self.target_lataccel_history[-1] - self.current_lataccel:>6.2f}")
         self.plot_data(ax[0], [(self.target_lataccel_history, 'Target lataccel'), (self.current_lataccel_history, 'Current lataccel')], ['Step', 'Lateral Acceleration'], 'Lateral Acceleration')
         self.plot_data(ax[1], [(self.action_history, 'Action')], ['Step', 'Action'], 'Action')
         self.plot_data(ax[2], [(np.array(self.state_history)[:, 0], 'Roll Lateral Acceleration')], ['Step', 'Lateral Accel due to Road Roll'], 'Lateral Accel due to Road Roll')
