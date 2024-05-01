@@ -57,9 +57,10 @@ def create_report(test, baseline, sample_rollouts, costs):
   fig.tight_layout()
   res.append(f'<img src="data:image/png;base64,{img2base64(fig)}" alt="Plot">')
 
-  with open("report.html", "w") as fob:
+  report_path = "./templates/report.html"
+  with open(report_path, "w") as fob:
     fob.write("\n".join(res))
-    print("Report saved to: './report.html'")
+    print(f"Report saved to: '{report_path}'")
 
 
 if __name__ == "__main__":
