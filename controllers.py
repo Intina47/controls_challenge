@@ -16,7 +16,7 @@ class MambaController(BaseController):
     self.intergral_error = 0
 
     # controller gains
-    self.kp = 1.1 # proportional gain
+    self.kp = 0.5 # proportional gain
     self.ki = 0.1 # integral gain
     self.kd = 0.05 # derivative gain
 
@@ -30,7 +30,7 @@ class MambaController(BaseController):
     self.prev_error = error
 
     if abs(error) > 0.1:
-      self.kp *= 0.4
+      self.kp *= 0.5
     else:
       self.kp *= 0.5
 
