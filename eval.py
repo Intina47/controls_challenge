@@ -42,6 +42,9 @@ def create_report(test, baseline, sample_rollouts, costs):
 
   res.append(f'<img src="data:image/png;base64,{img2base64(fig)}" alt="Plot">')
   res.append(res_df.groupby('controller').agg({'lataccel_cost': 'mean', 'jerk_cost': 'mean', 'total_cost': 'mean'}).round(3).reset_index().to_html(index=False))
+  grouped_df = res_df.groupby('controller').agg({'lataccel_cost': 'mean', 'jerk_cost': 'mean', 'total_cost': 'mean'}).reset_index()
+  with open("./runtime_data/runtime_results.csv", "a") as f:
+    grouped_df.to_csv(f, header=False, index=False)
 
   res.append("<h2>Sample Rollouts</h2>")
   fig, axs = plt.subplots(ncols=1, nrows=SAMPLE_ROLLOUTS, figsize=(15, 3 * SAMPLE_ROLLOUTS), sharex=True)
