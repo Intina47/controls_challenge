@@ -15,16 +15,16 @@ bash ./download_dataset.sh
 pip install -r requirements.txt
 
 # test this works
-python tinyphysics.py --model_path ./models/tinyphysics.onnx --data_path ./data/00000.csv --debug --controller simple
+python tinyphysics.py --model_path ./models/tinyphysics.onnx --data_path ./data/00000.csv --debug --controller mamba
 ```
 
 There are some other scripts to help you get aggregate metrics: 
 ```
 # batch Metrics of a controller on lots of routes
-python tinyphysics.py --model_path ./models/tinyphysics.onnx --data_path ./data --num_segs 100 --controller simple
+python tinyphysics.py --model_path ./models/tinyphysics.onnx --data_path ./data --num_segs 100 --controller mamba
 
 # generate a report comparing two controllers
-python eval.py --model_path ./models/tinyphysics.onnx --data_path ./data --num_segs 100 --test_controller simple --baseline_controller open
+python eval.py --model_path ./models/tinyphysics.onnx --data_path ./data --num_segs 100 --test_controller mamba --baseline_controller open
 
 ```
 You can also use the notebook at [`experiment.ipynb`](https://github.com/commaai/controls_challenge/blob/master/experiment.ipynb) for exploration.
